@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PassGen</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="panel">
+        <div class="orb orb-left"></div>
+        <div class="orb orb-right"></div>
+
+        <header class="hero">
+          <div class="brand">
+            <img class="brand-icon" src="icons/icon.svg" alt="PassGen icon" />
+            <div>
+              <p class="eyebrow">Powerful Password Generator</p>
+              <h1>PassGen</h1>
+            </div>
+          </div>
+          <p class="subtitle">自由定制您的强密码，保障您的账户安全。</p>
+        </header>
+
+        <section class="password-card" aria-live="polite">
+          <div class="password-header">
+            <span>生成结果</span>
+            <span class="strength-pill" id="strengthLabel">强度：高</span>
+          </div>
+          <div class="password-output" id="passwordOutput" title="生成的密码"></div>
+          <div class="meta-row">
+            <div class="meta-chip">
+              <span class="meta-label">长度</span>
+              <strong id="summaryLength">16 位</strong>
+            </div>
+            <div class="meta-chip">
+              <span class="meta-label">类型</span>
+              <strong id="summaryTypes">3 种</strong>
+            </div>
+          </div>
+        </section>
+
+        <div class="actions">
+          <button class="action-button ghost" id="refreshButton" type="button">
+            刷新
+          </button>
+          <button class="action-button primary" id="copyButton" type="button">
+            复制
+          </button>
+        </div>
+
+        <div class="settings-grid">
+          <section class="control-group">
+            <div class="section-title-row">
+              <label class="section-title" for="lengthRange">密码长度</label>
+              <span class="length-value" id="lengthValue">16</span>
+            </div>
+            <input
+              id="lengthRange"
+              class="slider"
+              type="range"
+              min="6"
+              max="128"
+              value="18"
+            />
+            <div class="slider-scale">
+              <span>6</span>
+              <span>128</span>
+            </div>
+          </section>
+
+          <section class="control-group">
+            <div class="section-title-row">
+              <label class="section-title" for="symbolInput">特殊字符集合</label>
+              <span class="hint" id="symbolHint">默认关闭</span>
+            </div>
+            <input
+              id="symbolInput"
+              class="text-input"
+              type="text"
+              value="!@#$%^&*"
+              disabled
+              spellcheck="false"
+              placeholder="!@#$%^&*"
+            />
+          </section>
+        </div>
+
+        <section class="control-group">
+          <div class="section-title-row">
+            <span class="section-title">字符类型</span>
+            <span class="hint">至少选择一项</span>
+          </div>
+          <div class="option-grid">
+            <label class="toggle-card">
+              <input id="uppercase" type="checkbox" checked />
+              <span>大写字母</span>
+              <code>A-Z</code>
+            </label>
+            <label class="toggle-card">
+              <input id="lowercase" type="checkbox" checked />
+              <span>小写字母</span>
+              <code>a-z</code>
+            </label>
+            <label class="toggle-card">
+              <input id="numbers" type="checkbox" checked />
+              <span>数字</span>
+              <code>0-9</code>
+            </label>
+            <label class="toggle-card">
+              <input id="symbols" type="checkbox" checked />
+              <span>特殊符号</span>
+              <code>!@#$%^&*</code>
+            </label>
+          </div>
+        </section>
+
+        <footer class="footer-row">
+          <p class="feedback" id="feedback"></p>
+          <span class="mini-note">本地生成，不上传密码</span>
+        </footer>
+
+      </section>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
